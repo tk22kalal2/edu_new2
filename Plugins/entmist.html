@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Pulse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="subject.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M634TG58WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M634TG58WD');
+</script>
+<link rel="stylesheet" href="../popup.css" />
+<script src="../popup.js"></script>
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-angle-left"></i> Back
+        </a>
+    </div>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <p>
+      Please search for the website on Google to access the lectures.
+      <br>
+      Keywords: <b>afrahtafreeh site, afrahtafreeh.site, site:afrahtafreeh.site, site:https:afrahtafreeh.site</b>
+    </p>
+  </div>
+</div>
+    <div class="content">
+        <div class="search-box">
+            <input type="text" id="input-box" onkeyup='tableSearch()' placeholder="Name">
+            <table class="content-table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                <thead>
+                    <tr>
+                        <th>LECTURE</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg0Nzk5NTM4NTQ1Mzk0' target='_blank'>ENT PART 1</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg1ODAxNTYyOTAwMzIx' target='_blank'>ENT PART 2</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg2ODAzNTg3MjU1MjQ4' target='_blank'>ENT PART 3</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg3ODA1NjExNjEwMTc1' target='_blank'>ENT PART 4</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg4ODA3NjM1OTY1MTAy' target='_blank'>ENT PART 5</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDg5ODA5NjYwMzIwMDI5' target='_blank'>ENT PART 6</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDkwODExNjg0Njc0OTU2' target='_blank'>ENT PART 7</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDkxODEzNzA5MDI5ODgz' target='_blank'>ENT PART 8</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDkyODE1NzMzMzg0ODEw' target='_blank'>ENT PART 9</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDkzODE3NzU3NzM5NzM3' target='_blank'>ENT PART 10</a></td></tr>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTMxMDk0ODE5NzgyMDk0NjY0' target='_blank'>ENT PART 11</a></td></tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="botusername.js"></script>
+    <script>
+        // Assuming botusername.js sets a variable `botUsername`
+        // For example:
+        // var botUsername = "testingclonepavo_bot"; // without @
+
+        // Function to replace placeholders in all links
+        function replacePlaceholders() {
+            const links = document.querySelectorAll('a[data-href*="{{botUsername}}"]');
+            links.forEach(link => {
+                link.href = link.getAttribute('data-href').replace('{{botUsername}}', botUsername);
+            });
+        }
+
+        // Call the function to replace placeholders
+        replacePlaceholders();
+
+        // Table search function remains unchanged
+        function tableSearch() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("input-box");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Assuming the search is based on the first column
+
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

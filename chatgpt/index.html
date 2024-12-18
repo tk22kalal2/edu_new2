@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical AI Assistant | NextPulse</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="popup.css" />
+    <script src="popup.js"></script>
+    <!-- Google AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5920367457745298"
+     crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M634TG58WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M634TG58WD');
+</script>
+  <script>
+  if (window.location.protocol === 'http:') {
+    window.location.href = window.location.href.replace('http:', 'https:');
+  }
+</script>
+  <script src="https://d3u598arehftfk.cloudfront.net/prebid_hb_12059_18609.js" async> </script>
+
+</head>
+<body>
+  <header class="header">
+    <h1 class="title">Hello, Doctors</h1>
+    <ul class="suggestion-list">
+      <li class="suggestion">
+        <h4 class="text">Explain the pathophysiology of Type 2 Diabetes Mellitus.</h4>
+        <span class="icon material-symbols-rounded">medical_information</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">What are the key clinical features of Acute Myocardial Infarction?</h4>
+        <span class="icon material-symbols-rounded">cardiology</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">Describe the mechanism of action of Beta-lactam antibiotics.</h4>
+        <span class="icon material-symbols-rounded">medication</span>
+      </li>
+      <li class="suggestion">
+        <h4 class="text">List the differential diagnoses for acute abdominal pain.</h4>
+        <span class="icon material-symbols-rounded">healing</span>
+      </li>
+    </ul>
+  </header>
+
+  <div class="chat-list"></div>
+
+  <div class="typing-area">
+    <form action="#" class="typing-form">
+      <div class="input-wrapper">
+        <input type="text" placeholder="Enter a medical query here" class="typing-input" required />
+        <button id="send-message-button" class="icon material-symbols-rounded">send</button>
+      </div>
+      <div class="action-buttons">
+        <span id="theme-toggle-button" class="icon material-symbols-rounded">light_mode</span>
+        <span id="delete-chat-button" class="icon material-symbols-rounded">delete</span>
+      </div>
+    </form>
+    <p class="disclaimer-text">
+      NEXTPULSE COPYRIGHT 2024
+    </p>
+  </div>
+
+  <script type="module" src="js/chatgpt.js"></script>
+</body>
+</html>

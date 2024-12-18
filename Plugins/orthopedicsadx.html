@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Links Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="subject.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M634TG58WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M634TG58WD');
+</script>
+<link rel="stylesheet" href="../popup.css" />
+<script src="../popup.js"></script>
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-angle-left"></i> Back
+        </a>
+    </div>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <p>
+      Please search for the website on Google to access the lectures.
+      <br>
+      Keywords: <b>afrahtafreeh site, afrahtafreeh.site, site:afrahtafreeh.site, site:https:afrahtafreeh.site</b>
+    </p>
+  </div>
+</div>
+    <div class="content">
+        <div class="search-box">
+            <input type="text" id="input-box" onkeyup='tableSearch()' placeholder="Name">
+            <table class="content-table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                <thead>
+                    <tr>
+                        <th>LECTURE</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTUzMzUxNTkyMDk1NjQz' target='_blank'>1.A. Orthopedics Day 1 Part 1 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU0MzUzNjE2NDUwNTcw' target='_blank'>1.B. Orthopedics Day 1 Part 2 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU1MzU1NjQwODA1NDk3' target='_blank'>1.C. Orthopedics Day 1 Part 3 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU2MzU3NjY1MTYwNDI0' target='_blank'>1.D. Orthopedics Day 1 Part 4 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU3MzU5Njg5NTE1MzUx' target='_blank'>2.A. Orthopedics Day 2 Part 1 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU4MzYxNzEzODcwMjc4' target='_blank'>2.B. Orthopedics Day 2 Part 2 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTU5MzYzNzM4MjI1MjA1' target='_blank'>2.C. Orthopedics Day 2 Part 3 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTYwMzY1NzYyNTgwMTMy' target='_blank'>2.D. Orthopedics Day 2 Part 4 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTYxMzY3Nzg2OTM1MDU5' target='_blank'>3.A. Orthopedics Day 3 Part 1 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTYyMzY5ODExMjg5OTg2' target='_blank'>3.B. Orthopedics Day 3 Part 2 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTYzMzcxODM1NjQ0OTEz' target='_blank'>3.C. Orthopedics Day 3 Part 3 atf.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIxOTY0MzczODU5OTk5ODQw' target='_blank'>3.D. Orthopedics Day 3 Part 4 atf.mp4</a></td></tr>										                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="botusername.js"></script>
+    <script>
+        // Assuming botusername.js sets a variable `botUsername`
+        // For example:
+        // var botUsername = "testingclonepavo_bot"; // without @
+
+        // Function to replace placeholders in all links
+        function replacePlaceholders() {
+            const links = document.querySelectorAll('a[data-href*="{{botUsername}}"]');
+            links.forEach(link => {
+                link.href = link.getAttribute('data-href').replace('{{botUsername}}', botUsername);
+            });
+        }
+
+        // Call the function to replace placeholders
+        replacePlaceholders();
+
+        // Table search function remains unchanged
+        function tableSearch() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("input-box");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Assuming the search is based on the first column
+
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

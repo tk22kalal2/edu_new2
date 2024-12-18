@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .custom-button {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .custom-button:hover {
+            transform: scale(1.05);
+        }
+
+        .button-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .button-text h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .button-text p {
+            margin: 0;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="custom-button">
+            <img src="../imagica/a.html" alt="Dr. Rajesh Kaushal" class="button-img">
+            <div class="button-text">
+                <h1>Anatomy</h1>
+                <p>Dr. Rajesh Kaushal</p>
+            </div>
+        </div>
+        <div class="custom-button">
+            <img src="../imagica/a.html" alt="Dr. Priti Sharma" class="button-img">
+            <div class="button-text">
+                <h1>Anatomy 2</h1>
+                <p>Dr. Priti Sharma</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blocked Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .alert-container {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff0000; /* Red color for alert */
+        }
+
+        p {
+            color: #333;
+            margin: 15px 0;
+        }
+
+        #copyButton {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #copyButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-container">
+        <h1>Alert</h1>
+        <p>You are temporarily blocked from the website as you are using a social media browser to open the website. Kindly use Google Search Engine to open the website. Search 'afrahtafreeh site' on Google and open the first website.</p>
+        <p></p>You will unblock after 2 hours.Dont click website link through telegram, instagram, facebook, whatsapp, youtube etc.</p>
+        <button id="copyButton">Copy</button>
+    </div>
+
+    <script>
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const textToCopy = 'afrahtafreeh site';
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => {
+                    alert('Text copied to clipboard: ' + textToCopy);
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+        });
+    </script>
+</body>
+</html>

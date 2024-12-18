@@ -1,0 +1,200 @@
+
+/* Table of Contents Styling */
+.toc {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 60px auto; /* Added more space from top and bottom, centered it horizontally */
+  border-radius: 8px; /* Rounded corners for the box */
+  border: 2px solid #ddd; /* Add a border for a square effect */
+  max-width: 600px; /* Set a max width to make the box square-like */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visibility */
+}
+
+.toc h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  text-align: center; /* Center the title */
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.toc-list li {
+  margin-bottom: 15px;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.toc-list a:hover {
+  text-decoration: underline;
+}
+
+.lecture-note {
+  font-size: 1.2em;
+  text-align: center;
+  margin: 20px 0;
+  color: #333;
+}
+
+
+.blog {
+  background-color: #f9f9f9;
+  padding: 40px;
+  margin: 80px auto; /* Added margin above and below */
+}
+
+.blog-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 20px; /* Spacing above */
+  margin-bottom: 20px; /* Spacing below */
+}
+
+/* Ensures the image fits the blog container's width */
+.blog-container img {
+  max-width: 100%; /* Image will scale down to fit the container width */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Removes any extra space below the image */
+  margin: 0 auto; /* Center the image within the container */
+  border-radius: 8px; /* Optional: Rounded corners for a clean look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow for better appearance */
+}
+
+
+.blog-title {
+  font-size: 28px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.blog-intro {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.blog-heading {
+  font-size: 22px;
+  color: #0077cc;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.blog-list {
+  margin-left: 20px;
+  list-style-type: disc;
+  color: #333;
+}
+
+.blog-list li {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.blog-content {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-top: 10px;
+  color: #555;
+}
+
+.blog-content:last-child {
+  margin-bottom: 0;
+}
+/* Styling for Read More and Blog Content */
+.read-more-btn {
+  display: none;
+}
+
+/* Remove the max-height and overflow restrictions on blog-content-wrapper */
+.blog-content-wrapper {
+  max-height: none; /* Fully expanded by default */
+  overflow: visible; /* Ensure all content is visible */
+  transition: none; /* Remove animation effects */
+}
+
+.blog-content-wrapper.expanded {
+  max-height: none; /* Remove the height limit when expanded */
+}
+
+/* Styling for Read More and Blog Content */
+.website-button-wrapper {
+  text-align: center; /* Corrected 'centre' to 'center' */
+  margin-top: 20px;
+}
+
+.website-btn {
+  display: inline-block;
+  background-color: #0077cc;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.website-btn:hover {
+  background-color: #005fa3;
+}
+
+/* General styles for images */
+/* General styles for images */
+
+
+/* Flexbox for images in a row with border */
+.image-row {
+  display: flex;
+  justify-content: space-between; /* Equal space between images */
+  align-items: center;
+  flex-wrap: nowrap; /* Keep images on the same line */
+  margin: 20px 0;
+  padding: 10px; /* Padding inside the border */
+  border: 2px solid #ccc; /* Border around the group of images */
+  border-radius: 8px; /* Rounded corners */
+  gap: 10px; /* Space between images inside the row */
+  max-width: 100%; /* Ensures the container doesn't overflow */
+  height: 500px; /* Fixed height of the square box */
+  background-color: #f9f9f9; /* Optional: Background for the box */
+}
+
+/* Default: one image takes the full width */
+.image-row .blog-image {
+  flex: 1 1 100%; /* Full width for one image */
+}
+
+/* For two images: 50% each */
+.image-row.two-images .blog-image {
+  flex: 1 1 calc(50% - 10px); /* Two images get half the width, with space between them */
+}
+
+/* For three images: 33.33% each */
+.image-row.three-images .blog-image {
+  flex: 1 1 calc(33.33% - 10px); /* Three images get one-third of the width */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .image-row {
+    flex-direction: column; /* Stack images vertically on small screens */
+    height: auto; /* Adjust box height for small screens */
+  }
+
+  .image-row .blog-image {
+    width: 100%; /* Each image takes full width on small screens */
+    margin-bottom: 15px; /* Space between stacked images */
+  }
+}

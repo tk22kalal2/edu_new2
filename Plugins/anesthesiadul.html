@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Links Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="subject.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M634TG58WD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-M634TG58WD');
+</script>
+<link rel="stylesheet" href="../popup.css" />
+<script src="../popup.js"></script>
+    
+</head>
+<body>
+    <div class="navbar">
+        <a href="../index.html" class="back-link">
+            <i class="fa-solid fa-angle-left"></i> Back
+        </a>
+    </div>
+
+<div id="popup" class="popup-overlay">
+  <div class="popup-content">
+    <p>
+      Please search for the website on Google to access the lectures.
+      <br>
+      Keywords: <b>afrahtafreeh site, afrahtafreeh.site, site:afrahtafreeh.site, site:https:afrahtafreeh.site</b>
+    </p>
+  </div>
+</div>
+    <div class="content">
+        <div class="search-box">
+            <input type="text" id="input-box" onkeyup='tableSearch()' placeholder="Name">
+            <table class="content-table" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
+                <thead>
+                    <tr>
+                        <th>LECTURE</th>
+                    </tr>
+                </thead>
+                <tbody>
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI0OTIwNDk4NDk4MDA2' target='_blank'>48360801688569172.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI1OTIyNTIyODUyOTMz' target='_blank'>54612531688535533.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI2OTI0NTQ3MjA3ODYw' target='_blank'>38393931688381399.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI3OTI2NTcxNTYyNzg3' target='_blank'>62233331688300293.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI4OTI4NTk1OTE3NzE0' target='_blank'>63026031667805462.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjI5OTMwNjIwMjcyNjQx' target='_blank'>16600631667718944.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjMwOTMyNjQ0NjI3NTY4' target='_blank'>44706691667639583.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjMxOTM0NjY4OTgyNDk1' target='_blank'>36400961648540882.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjMyOTM2NjkzMzM3NDIy' target='_blank'>33354141648366280.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjMzOTM4NzE3NjkyMzQ5' target='_blank'>51829191623760340.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjM0OTQwNzQyMDQ3Mjc2' target='_blank'>45666191623726788.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjM1OTQyNzY2NDAyMjAz' target='_blank'>54739391623651618.mp4</a></td></tr>										
+<tr><td><a data-href='https://telegram.me/{{botUsername}}?start=Z2V0LTIzMjM2OTQ0NzkwNzU3MTMw' target='_blank'>9559581623558643.mp4</a></td></tr>										                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="botusername.js"></script>
+    <script>
+        // Assuming botusername.js sets a variable `botUsername`
+        // For example:
+        // var botUsername = "{{botUsername}}"; // without @
+
+        // Function to replace placeholders in all links
+        function replacePlaceholders() {
+            const links = document.querySelectorAll('a[data-href*="{{botUsername}}"]');
+            links.forEach(link => {
+                link.href = link.getAttribute('data-href').replace('{{botUsername}}', botUsername);
+            });
+        }
+
+        // Call the function to replace placeholders
+        replacePlaceholders();
+
+        // Table search function remains unchanged
+        function tableSearch() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("input-box");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Assuming the search is based on the first column
+
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

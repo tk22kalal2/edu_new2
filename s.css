@@ -1,0 +1,62 @@
+.search-container {
+    position: relative;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.search-box {
+    width: 100%; /* Matches the width of suggestions */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fff; /* White background */
+    color: #000; /* Black font */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.suggestion-list {
+    position: absolute;
+    width: 100%; /* Matches the width of the search box */
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff; /* White background */
+    color: #000; /* Black font */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.suggestion-list li {
+    padding: 4px; /* Reduced padding */
+    cursor: pointer;
+    line-height: 2; /* Reduced line height */
+    border-bottom: 1px solid #ddd;
+}
+
+.suggestion-list li:last-child {
+    border-bottom: none;
+}
+
+.suggestion-list li:hover {
+    background-color: #f0f0f0;
+}
+
+.suggestion-list li strong {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.suggestion-list li span {
+    display: block;
+    color: #555; /* Subtle color for the subject */
+    font-size: 14px; /* Decreased font size */
+    margin-bottom: 3px; /* No margin */
+    line-height: 2; /* Reduced line height */
+}

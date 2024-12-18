@@ -1,0 +1,42 @@
+
+.share-btn{
+    position: relative;
+    border: none;
+    background: #fff;
+    color: #ff7d7d;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    padding-top: 2.5px;
+    padding-right: 3px;
+    cursor: pointer;
+    z-index: 2;
+}
+/* button.css */
+
+/* Style for the button */
+.copy-btn{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #80d0c7;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none; /* Disable text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Hover effect */
+.copy-btn:hover {
+  background-color: #80d0c7;
+}
+
+/* Optional: Add more styles as needed */
