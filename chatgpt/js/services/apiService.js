@@ -13,7 +13,7 @@ export const generateResponse = async (userMessage) => {
         { role: "system", content: MEDICAL_AI_PROMPT },
         { role: "user", content: userMessage },
       ],
-      model: "llama-3.1-70b-versatile",
+      model: "llama-3.3-70b-specdec",
       temperature: 0.7,
       max_tokens: 4096,
     }),
