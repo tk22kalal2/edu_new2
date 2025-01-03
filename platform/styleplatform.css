@@ -91,6 +91,11 @@ body {
 .back-link i {
     font-size: 1.5em; /* Adjust size as needed */
 }
+.adsbygoogle {
+  max-width: 100%;
+  height: auto;
+  margin: 20px 0;
+}
 
 @media (min-aspect-ratio: 16/9) {
     .banner video {
