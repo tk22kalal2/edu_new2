@@ -76,8 +76,6 @@ body {
   min-height: calc(100vh - 250px);
   padding: 20px;
   overflow-y: auto;
-  margin-bottom: 5rem;
-  padding: 5px;
 }
 
 .message {
@@ -85,10 +83,19 @@ body {
   gap: 15px;
   padding: 20px;
   border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.message .text {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: calc(100% - 60px);
 }
 
 .message .icon {
   font-size: 24px;
+  flex-shrink: 0;
 }
 
 .message.outgoing {
@@ -100,6 +107,27 @@ body {
   background: var(--incoming-chat-bg);
 }
 
+/* Copy button styles */
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  color: var(--text-color);
+}
+
+.copy-button:hover {
+  opacity: 1;
+}
+
+.copy-button.copied {
+  color: var(--theme-color);
+}
+
 /* Update heading styles */
 .chat-list .message .text h1,
 .chat-list .message .text h2,
@@ -107,6 +135,7 @@ body {
   margin: 1rem 0;
   color: var(--text-color);
   font-weight: 600;
+  padding-right: 40px;
 }
 
 .chat-list .message .text h1 {
@@ -147,7 +176,7 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  padding: 13px;
+  padding: 20px;
   background: var(--bg-color);
   border-top: 1px solid var(--border-color);
 }
