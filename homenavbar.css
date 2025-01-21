@@ -6,6 +6,7 @@
   padding: 1rem 2rem;
   background-color: #333;
   color: #fff;
+  position: relative;
 }
 
 .logo h1 {
@@ -40,14 +41,39 @@
 }
 
 .search-container {
-  display: flex;
+  display: none;
   align-items: center;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  padding: 1rem;
+  width: 100%;
+  z-index: 10;
+}
+
+.search-container.active {
+  display: flex;
 }
 
 .search-container input {
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
+  width: 100%;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: #fff;
 }
 
 /* Mobile Menu Styles */
@@ -89,7 +115,7 @@
     text-align: center;
   }
 
-  .search-container {
-    display: none;
+  .search-icon {
+    order: -1; /* Move search icon to the left */
   }
 }
