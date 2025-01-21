@@ -8,7 +8,22 @@ export const createMessageElement = (message, isIncoming = false) => {
       ${isIncoming ? "smart_toy" : "person"}
     </div>
     <div class="text"></div>
+    <button class="copy-button material-symbols-rounded" title="Copy text">content_copy</button>
   `;
+
+  // Add copy functionality
+  const copyButton = messageDiv.querySelector(".copy-button");
+  copyButton.addEventListener("click", () => {
+    const textContent = messageDiv.querySelector(".text").textContent;
+    navigator.clipboard.writeText(textContent).then(() => {
+      copyButton.textContent = "check";
+      copyButton.classList.add("copied");
+      setTimeout(() => {
+        copyButton.textContent = "content_copy";
+        copyButton.classList.remove("copied");
+      }, 2000);
+    });
+  });
   
   return messageDiv;
 };
