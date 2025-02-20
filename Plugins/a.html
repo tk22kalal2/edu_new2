@@ -7,7 +7,7 @@
     <script>
         async function fetchStream(videoId) {
             try {
-                let response = await fetch(`https://your-bot-url/get_stream?video_id=${videoId}`);
+                let response = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/get_stream?video_id=${videoId}`);
                 let data = await response.json();
 
                 if (data.stream_link) {
