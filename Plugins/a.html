@@ -3,40 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streaming Link Fetcher</title>
-</head>
-<body>
-    <h1>Enter Message ID to Fetch Stream</h1>
-    <input type="text" id="msg_id" placeholder="Enter msg_id">
-    <button onclick="fetchStream()">Get Stream</button>
-    <p id="result"></p>
-
+    <title>Lecture Videos</title>
     <script>
-        function fetchStream() {
-            const msg_id = document.getElementById("msg_id").value;
-            if (!msg_id) {
-                alert("Please enter a msg_id.");
-                return;
+        async function fetchStream(videoId) {
+            try {
+                let response = await fetch(`https://your-bot-url/get_stream?video_id=${videoId}`);
+                let data = await response.json();
+
+                if (data.stream_link) {
+                    window.location.href = data.stream_link;
+                } else {
+                    alert("Stream link not found. Please try again.");
+                }
+            } catch (error) {
+                alert("Error fetching stream link.");
             }
-
-            console.log("Fetching stream for msg_id:", msg_id);
-
-            fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/generate_stream?msg_id=${msg_id}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.error) {
-                        console.error("Error:", data.error);
-                        document.getElementById("result").innerText = "Error: " + data.error;
-                    } else {
-                        console.log("Streaming URL received:", data.stream_url);
-                        document.getElementById("result").innerHTML = `<a href="${data.stream_url}" target="_blank">Click to Stream</a>`;
-                    }
-                })
-                .catch(error => {
-                    console.error("Fetch Error:", error);
-                    document.getElementById("result").innerText = "Could not fetch streaming link.";
-                });
         }
     </script>
+</head>
+<body>
+
+    <h2>Lecture Videos</h2>
+    <ul>
+        <li><a href="#" onclick="fetchStream(12345)">Lecture 1</a></li>
+        <li><a href="#" onclick="fetchStream(67890)">Lecture 2</a></li>
+        <li><a href="#" onclick="fetchStream(11223)">Lecture 3</a></li>
+    </ul>
+
 </body>
 </html>
