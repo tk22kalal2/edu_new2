@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Streaming</title>
-    <script>
-        async function getStreamLink(msg_id) {
-            try {
-                let response = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/generate_stream?msg_id=${msg_id}`);
-                let data = await response.json();
-                if (data.stream_link) {
-                    window.location.href = data.stream_link;  // Redirect user to stream link
-                } else {
-                    alert("Error generating stream link!");
-                }
-            } catch (error) {
-                console.error("Error fetching stream link:", error);
-                alert("Could not fetch streaming link.");
-            }
-        }
-    </script>
+    <title>Streaming Link Fetcher</title>
 </head>
 <body>
-    <h2>Select a Video</h2>
-    <ul>
-        <li><a href="#" onclick="getStreamLink(45546)">Watch Video 1</a></li>
-        <li><a href="#" onclick="getStreamLink(45547)">Watch Video 2</a></li>
-        <li><a href="#" onclick="getStreamLink(45548)">Watch Video 3</a></li>
-    </ul>
+    <h1>Enter Message ID to Fetch Stream</h1>
+    <input type="text" id="msg_id" placeholder="Enter msg_id">
+    <button onclick="fetchStream()">Get Stream</button>
+    <p id="result"></p>
+
+    <script>
+        function fetchStream() {
+            const msg_id = document.getElementById("msg_id").value;
+            if (!msg_id) {
+                alert("Please enter a msg_id.");
+                return;
+            }
+
+            console.log("Fetching stream for msg_id:", msg_id);
+
+            fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/generate_stream?msg_id=${msg_id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error("Error:", data.error);
+                        document.getElementById("result").innerText = "Error: " + data.error;
+                    } else {
+                        console.log("Streaming URL received:", data.stream_url);
+                        document.getElementById("result").innerHTML = `<a href="${data.stream_url}" target="_blank">Click to Stream</a>`;
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch Error:", error);
+                    document.getElementById("result").innerText = "Could not fetch streaming link.";
+                });
+        }
+    </script>
 </body>
 </html>
