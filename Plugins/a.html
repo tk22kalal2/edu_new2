@@ -7,7 +7,7 @@
     <script>
         async function getStreamLink(msg_id) {
             try {
-                let response = await fetch(`https://your-heroku-app.herokuapp.com/generate_stream?msg_id=${msg_id}`);
+                let response = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/generate_stream?msg_id=${msg_id}`);
                 let data = await response.json();
                 if (data.stream_link) {
                     window.location.href = data.stream_link;  // Redirect user to stream link
