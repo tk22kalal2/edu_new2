@@ -2,7 +2,28 @@
 <html>
 <head>
     <title>Medical Lectures - Page 1</title>
-    <link rel="stylesheet" href="styles.css">
+    <styles>
+        .loading {
+    color: #666;
+    font-size: 0.9em;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.lecture-item {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.lecture-item:hover {
+    background: #f0f0f0;
+}
+    </styles>
 </head>
 <body>
     <div class="lecture-list">
