@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecture Videos</title>
     <script>
-        async function fetchStream(videoId) {
+        async function fetchStream(videoUrl) {
             try {
-                let response = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/get_stream?video_id=${videoId}`);
+                let response = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/get_stream?video_url=${encodeURIComponent(videoUrl)}`);
                 let data = await response.json();
 
                 if (data.stream_link) {
@@ -25,9 +25,9 @@
 
     <h2>Lecture Videos</h2>
     <ul>
-        <li><a href="#" onclick="fetchStream(12345)">Lecture 1</a></li>
-        <li><a href="#" onclick="fetchStream(67890)">Lecture 2</a></li>
-        <li><a href="#" onclick="fetchStream(11223)">Lecture 3</a></li>
+        <li><a href="#" onclick="fetchStream('https://t.me/c/2024354927/45548')">Lecture 1</a></li>
+        <li><a href="#" onclick="fetchStream('https://t.me/c/2024354927/67890')">Lecture 2</a></li>
+        <li><a href="#" onclick="fetchStream('https://t.me/c/2024354927/11223')">Lecture 3</a></li>
     </ul>
 
 </body>
