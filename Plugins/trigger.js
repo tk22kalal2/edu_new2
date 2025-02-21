@@ -1,38 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.querySelector('.lecture-list');
     
-    // Check if container exists
     if (!container) {
         console.error('Lecture container not found!');
         return;
     }
 
-    // Event delegation for dynamic elements
     container.addEventListener('click', async (e) => {
         const item = e.target.closest('.lecture-item');
-        
-        // Check if clicked element is a lecture item
-        if (!item) {
-            console.error('Clicked element is not a lecture item!');
-            return;
-        }
+        if (!item) return;
 
         const telegramLink = item.dataset.telegramLink;
         const lectureName = item.textContent.trim();
         
-        // Create loading element
-        const loading = document.createElement('div');
-        loading.className = 'loading';
-        loading.innerHTML = '⏳ Generating link...';
-        
-        try {
-            // Clear existing children and show loading
-            item.innerHTML = '';
-            item.appendChild(loading);
-            item.style.pointerEvents = 'none';
+        // Show loading state
+        item.innerHTML = '⏳ Generating link...';
+        item.style.pointerEvents = 'none';
 
+        try {
             // Send to backend
-            const response = await fetch('https://nextpulse-25b1b64cdf4e.herokuapp.com/process', {
+            const response = await fetch('https://nextpulse-25b1b64df4e.herokuapp.com/process', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Poll for status update
                 const poll = setInterval(async () => {
-                    const statusResponse = await fetch(`https://nextpulse-25b1b64cdf4e.herokuapp.com/check-status/${encodeURIComponent(lectureName)}`);
+                    const statusResponse = await fetch(`https://nextpulse-25b1b64df4e.herokuapp.com/check-status/${encodeURIComponent(lectureName)}`);
                     
                     if (!statusResponse.ok) {
                         throw new Error(`HTTP error! Status: ${statusResponse.status}`);
