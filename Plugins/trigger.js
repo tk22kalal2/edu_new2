@@ -13,12 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const telegramLink = item.dataset.telegramLink;
         const lectureName = item.textContent.trim();
         
+        console.log(`Clicked: ${lectureName} (${telegramLink})`);
+        
         // Show loading state
         item.innerHTML = '⏳ Generating link...';
         item.style.pointerEvents = 'none';
 
         try {
             // Send to backend
+            console.log('Sending request to backend...');
             const response = await fetch('https://nextpulse-25b1b64df4e.herokuapp.com/process', {
                 method: 'POST',
                 headers: {
@@ -30,24 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
             });
             
+            console.log('Received response:', response);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             
             const { stream_link } = await response.json();
+            console.log('Stream link:', stream_link);
             
             if (stream_link && stream_link !== "pending") {
                 window.location.href = stream_link;
             } else {
-                // Poll for status update
+                console.log('Polling for status update...');
                 const poll = setInterval(async () => {
                     const statusResponse = await fetch(`https://nextpulse-25b1b64df4e.herokuapp.com/check-status/${encodeURIComponent(lectureName)}`);
+                    console.log('Status response:', statusResponse);
                     
                     if (!statusResponse.ok) {
                         throw new Error(`HTTP error! Status: ${statusResponse.status}`);
                     }
                     
                     const { stream_link: updatedLink } = await statusResponse.json();
+                    console.log('Updated link:', updatedLink);
                     
                     if (updatedLink && updatedLink !== "pending") {
                         clearInterval(poll);
