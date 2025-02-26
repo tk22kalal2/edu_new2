@@ -3,8 +3,8 @@ name: Update Lectures JSON
 on:
   push:
     paths:
-      - 'Plug/newLectures.txt'  # Trigger when newLectures.txt is updated
-  workflow_dispatch:  # Allows manual triggering
+      - 'Plug/newLectures.txt'
+  workflow_dispatch:
 
 jobs:
   update-lectures:
@@ -19,12 +19,15 @@ jobs:
           node-version: '16'
 
       - name: Run lecture updater
-        run: node Plug/updateLectures.js
+        run: |
+          rm -f Plug/lectures.json && touch Plug/lectures.json  # Ensure file updates
+          node Plug/updateLectures.js
+          git status  # Debugging: Check if file changes
 
       - name: Commit and push updated lectures.json
         run: |
           git config --local user.email "github-actions@github.com"
           git config --local user.name "github-actions"
           git add Plug/lectures.json
-          git commit -m "Update lectures.json with new lectures"
+          git commit -m "Update lectures.json with new lectures" || echo "No changes to commit"
           git push
