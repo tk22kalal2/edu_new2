@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Today's Token</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+  </style>
+</head>
+<body>
+  <h1>Today's Token</h1>
+  <p id="token"></p>
+
+ <script>
+    async function loadToken() {
+      try {
+        const response = await fetch('./daily_token.json'); // Correct path
+        const data = await response.json();
+        document.getElementById('token').textContent = data.token;
+      } catch (error) {
+        document.getElementById('token').textContent = 'Error loading token!';
+        console.error('Error loading token:', error);
+      }
+    }
+    loadToken();
+</script>
+ 
+</body>
+</html>
