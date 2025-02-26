@@ -1,6 +1,6 @@
 async function loadLectures(tableId, startId, endId) {
   try {
-    const response = await fetch("../Plugins/lectures.json?nocache=" + new Date().getTime());
+    const response = await fetch("../Plug/lectures.json?nocache=" + new Date().getTime());
     const data = await response.json();
     const tableBody = document.querySelector(`#${tableId} tbody`);
 
