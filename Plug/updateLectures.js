@@ -6,16 +6,24 @@ const newLecturesFile = "Plug/newLectures.txt";
 // Function to update lectures.json
 function updateLectures() {
     try {
-        // Read existing lectures.json
-        let lecturesData = fs.existsSync(lecturesFile) ? JSON.parse(fs.readFileSync(lecturesFile, "utf8")) : { lectures: [] };
+        // Ensure lectures.json exists and is valid
+        if (!fs.existsSync(lecturesFile) || fs.statSync(lecturesFile).size === 0) {
+            fs.writeFileSync(lecturesFile, JSON.stringify({ lectures: [] }, null, 2));
+        }
+
+        // Read and parse existing lectures.json
+        let lecturesData = JSON.parse(fs.readFileSync(lecturesFile, "utf8"));
 
         // Read newLectures.txt
         let newLecturesText = fs.readFileSync(newLecturesFile, "utf8").trim();
-        let newLecturesArray = newLecturesText.split("\n\n").map(item => item.trim());
+        let newLecturesArray = newLecturesText
+            .split("\n\n")
+            .map(item => item.trim())
+            .filter(item => item.length > 0); // Remove empty entries
 
         // Get last used ID
         let lastId = lecturesData.lectures.length > 0 ? lecturesData.lectures[lecturesData.lectures.length - 1].id : 0;
-        
+
         // Convert existing lectures into a Set to prevent duplicates
         let existingLecturesSet = new Set(lecturesData.lectures.map(lecture => lecture.html.trim()));
 
