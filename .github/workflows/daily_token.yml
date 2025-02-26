@@ -18,7 +18,7 @@ jobs:
           node-version: '16'
 
       - name: Run token generator
-        run: node Plugins/daily_token_generator.js
+        run: node Plug/daily_token_generator.js
 
       - name: Commit and push token
         run: |
