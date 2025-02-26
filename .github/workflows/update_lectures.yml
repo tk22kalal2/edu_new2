@@ -3,7 +3,7 @@ name: Update Lectures JSON
 on:
   push:
     paths:
-      - 'Plugins/newLectures.txt'  # Trigger when newLectures.txt is updated
+      - 'Plug/newLectures.txt'  # Trigger when newLectures.txt is updated
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           node-version: '16'
 
       - name: Run lecture updater
-        run: node Plugins/updateLectures.js
+        run: node Plug/updateLectures.js
 
       - name: Commit and push updated lectures.json
         run: |
