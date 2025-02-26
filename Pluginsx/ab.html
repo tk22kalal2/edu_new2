@@ -59,7 +59,7 @@
   </style>
 </head>
 <body>
-   <div id="token-popup">
+  <div id="token-popup">
     <div id="token-box">
       <h2>Enter Token to Access</h2>
       <input type="text" id="tokenInput" placeholder="Enter token" />
@@ -68,7 +68,7 @@
     </div>
   </div>
 
-<script>
+  <script>
     async function checkToken() {
         try {
             const response = await fetch('../Plug/daily_token.json?nocache=' + new Date().getTime());
@@ -77,7 +77,7 @@
             const savedDate = localStorage.getItem('tokenDate');
 
             if (savedToken === data.token && savedDate === data.date) {
-                document.getElementById('token-popup').style.display = 'none'; // Hide popup if token is still valid
+                document.getElementById('token-popup').style.display = 'none';
             }
         } catch (error) {
             console.error('Error loading token:', error);
@@ -91,9 +91,9 @@
             const inputToken = document.getElementById('tokenInput').value;
 
             if (inputToken === data.token) {
-                localStorage.setItem('dailyToken', inputToken); // Save token in localStorage
-                localStorage.setItem('tokenDate', data.date); // Save date to expire at 12 AM
-                document.getElementById('token-popup').style.display = 'none'; // Hide popup
+                localStorage.setItem('dailyToken', inputToken);
+                localStorage.setItem('tokenDate', data.date);
+                document.getElementById('token-popup').style.display = 'none';
             } else {
                 document.getElementById('tokenMessage').textContent = 'Invalid token. Please try again.';
             }
@@ -102,8 +102,8 @@
         }
     }
 
-    checkToken(); // Check token on page load
-</script>
+    checkToken();
+  </script>
 
   <div class="navbar">
     <a href="../index.html" class="back-link">
@@ -117,7 +117,6 @@
       <table class="content-table" id="myTable">
         <thead>
           <tr>
-            <th>ID</th>
             <th>LECTURE</th>
           </tr>
         </thead>
@@ -136,11 +135,31 @@
   <script src="../Plug/f.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Customize start and end ID for each page
       const startId = 1;
-      const endId = 100; 
+      const endId = 2;
       loadLectures("myTable", startId, endId);
     });
+
+    function loadLectures(tableId, startId, endId) {
+      const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+
+      // Example lecture data (Replace this with actual fetched data)
+      const lectures = [
+        { id: 1, title: "Anatomy - Lecture 1", link: "lecture1.html" },
+        { id: 2, title: "Physiology - Lecture 2", link: "lecture2.html" }
+      ];
+
+      // Clear existing rows
+      tableBody.innerHTML = "";
+
+      lectures.forEach(lecture => {
+        if (lecture.id >= startId && lecture.id <= endId) {
+          let row = tableBody.insertRow();
+          let cell = row.insertCell(0);
+          cell.innerHTML = `<a href="#" onclick="loadIframe('${lecture.link}')">${lecture.title}</a>`;
+        }
+      });
+    }
 
     function loadIframe(url) {
       document.getElementById('iframe-container').style.display = 'block';
@@ -159,16 +178,11 @@
       table = document.getElementById('myTable');
       tr = table.getElementsByTagName('tr');
 
-      for (i = 0; i < tr.length; i++) {
-        // Search only in the LECTURE NAME column (index 1)
-        td = tr[i].getElementsByTagName('td')[1];
+      for (i = 1; i < tr.length; i++) { // Start from 1 to avoid searching in header row
+        td = tr[i].getElementsByTagName('td')[0];
         if (td) {
           txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = '';
-          } else {
-            tr[i].style.display = 'none';
-          }
+          tr[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
         }
       }
     }
