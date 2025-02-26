@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medquiz Lectures A</title>
+  <title>Medquiz Lectures</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="subject.css" />
   <link rel="stylesheet" href="../popup.css" />
   <script src="../popup.js"></script>
-    <style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5920367457745298" crossorigin="anonymous"></script>
+  <style>
     #iframe-container {
       display: none;
       position: fixed;
@@ -58,7 +59,7 @@
   </style>
 </head>
 <body>
-  <div id="token-popup">
+   <div id="token-popup">
     <div id="token-box">
       <h2>Enter Token to Access</h2>
       <input type="text" id="tokenInput" placeholder="Enter token" />
@@ -67,7 +68,7 @@
     </div>
   </div>
 
-  <script>
+<script>
     async function checkToken() {
         try {
             const response = await fetch('../Plug/daily_token.json?nocache=' + new Date().getTime());
@@ -101,8 +102,8 @@
         }
     }
 
-    checkToken();
-  </script>
+    checkToken(); // Check token on page load
+</script>
 
   <div class="navbar">
     <a href="../index.html" class="back-link">
@@ -116,6 +117,7 @@
       <table class="content-table" id="myTable">
         <thead>
           <tr>
+            <th>ID</th>
             <th>LECTURE</th>
           </tr>
         </thead>
@@ -131,33 +133,29 @@
     <iframe id="external-frame"></iframe>
   </div>
 
-  <script src="../Plug/f.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const startId = 1;
-      const endId = 2;
-      loadLectures("myTable", startId, endId);
-    });
+    async function loadLectures() {
+        const tableBody = document.querySelector("#myTable tbody");
 
-    function loadLectures(tableId, startId, endId) {
-      const tableBody = document.getElementById(tableId).getElementsByTagName('tbody')[0];
+        try {
+            const response = await fetch("../Plug/lectures.json?nocache=" + new Date().getTime());
+            const data = await response.json();
 
-      // Example lecture data (Replace this with actual fetched data)
-      const lectures = [
-        { id: 1, title: "Anatomy - Lecture 1", link: "lecture1.html" },
-        { id: 2, title: "Physiology - Lecture 2", link: "lecture2.html" }
-      ];
+            tableBody.innerHTML = ""; // Clear previous rows
 
-      // Clear existing rows
-      tableBody.innerHTML = "";
+            data.lectures.forEach(lecture => {
+                let row = tableBody.insertRow();
+                
+                let idCell = row.insertCell(0);
+                idCell.textContent = lecture.id;  // Display ID
+                
+                let titleCell = row.insertCell(1);
+                titleCell.innerHTML = `<a href="#" onclick="loadIframe('${lecture.link}')">${lecture.title}</a>`;
+            });
 
-      lectures.forEach(lecture => {
-        if (lecture.id >= startId && lecture.id <= endId) {
-          let row = tableBody.insertRow();
-          let cell = row.insertCell(0);
-          cell.innerHTML = `<a href="#" onclick="loadIframe('${lecture.link}')">${lecture.title}</a>`;
+        } catch (error) {
+            console.error("Error loading lectures:", error);
         }
-      });
     }
 
     function loadIframe(url) {
@@ -177,14 +175,22 @@
       table = document.getElementById('myTable');
       tr = table.getElementsByTagName('tr');
 
-      for (i = 1; i < tr.length; i++) { // Start from 1 to avoid searching in header row
-        td = tr[i].getElementsByTagName('td')[0];
+      for (i = 1; i < tr.length; i++) { // Start from index 1 to skip header row
+        td = tr[i].getElementsByTagName('td')[1]; // Target the second column for searching
         if (td) {
           txtValue = td.textContent || td.innerText;
-          tr[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = '';
+          } else {
+            tr[i].style.display = 'none';
+          }
         }
       }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        loadLectures();
+    });
   </script>
 </body>
 </html>
