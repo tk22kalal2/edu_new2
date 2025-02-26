@@ -135,28 +135,38 @@
 
   <script>
     async function loadLectures() {
-        const tableBody = document.querySelector("#myTable tbody");
+    const tableBody = document.querySelector("#myTable tbody");
 
-        try {
-            const response = await fetch("../Plug/lectures.json?nocache=" + new Date().getTime());
-            const data = await response.json();
+    try {
+        const response = await fetch("../Plug/lectures.json?nocache=" + new Date().getTime());
+        const data = await response.json();
 
-            tableBody.innerHTML = ""; // Clear previous rows
+        tableBody.innerHTML = ""; // Clear previous rows
 
-            data.lectures.forEach(lecture => {
+        data.lectures.forEach(lecture => {
+            // Extract lecture name and link from HTML
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = lecture.html;
+            const aTag = tempDiv.querySelector("a");
+
+            if (aTag) {
+                const lectureName = aTag.textContent.trim(); // Extract text
+                const lectureLink = aTag.getAttribute("onclick").match(/'([^']+)'/)[1]; // Extract URL inside loadIframe('URL')
+
                 let row = tableBody.insertRow();
-                
+
                 let idCell = row.insertCell(0);
                 idCell.textContent = lecture.id;  // Display ID
-                
-                let titleCell = row.insertCell(1);
-                titleCell.innerHTML = `<a href="#" onclick="loadIframe('${lecture.link}')">${lecture.title}</a>`;
-            });
 
-        } catch (error) {
-            console.error("Error loading lectures:", error);
-        }
+                let titleCell = row.insertCell(1);
+                titleCell.innerHTML = `<a href="#" onclick="loadIframe('${lectureLink}')">${lectureName}</a>`;
+            }
+        });
+
+    } catch (error) {
+        console.error("Error loading lectures:", error);
     }
+}
 
     function loadIframe(url) {
       document.getElementById('iframe-container').style.display = 'block';
