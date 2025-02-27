@@ -1,0 +1,32 @@
+name: Daily Token Generator
+
+on:
+  schedule:
+    - cron: '30 18 * * *'  # Runs at 12:00 AM IST daily (18:30 UTC)
+  workflow_dispatch:    # Allows manual triggering
+
+jobs:
+  generate-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master3  # Ensure you're on the correct branch
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Run token generator
+        run: node Plug/daily_token_generator.js
+
+      - name: Commit and force push token
+        run: |
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "github-actions"
+          git add Plug/daily_token.json
+          git commit -m "Update daily token" || echo "No changes to commit"
+          git pull --rebase origin master3 || echo "No updates from remote"
+          git push --force origin master3 || echo "No changes to push"
