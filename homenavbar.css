@@ -5,12 +5,14 @@
   align-items: center;
   padding: 1rem 2rem;
   background-color: #80d0c7;
-  color: #000; /* Text color changed to black */
+  color: #000;
   position: relative;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  overflow: hidden; /* Prevents content from overflowing */
 }
 
+/* Logo & Tagline */
 .logo h1 {
   font-size: 1.5rem;
   margin: 0;
@@ -18,9 +20,10 @@
 
 .logo .tagline {
   font-size: 0.9rem;
-  color: #666; /* Subtle gray for tagline */
+  color: #666;
 }
 
+/* Navigation Links */
 .nav-links {
   display: flex;
   list-style: none;
@@ -33,22 +36,23 @@
 }
 
 .nav-links a {
-  color: #000; /* Text color changed to black */
+  color: #000;
   text-decoration: none;
   font-size: 1rem;
 }
 
 .nav-links a:hover {
-  color: #f39c12; /* Highlight color on hover */
+  color: #f39c12;
 }
 
+/* Search Container */
 .search-container {
   display: none;
   align-items: center;
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #fff; /* Background color changed to white */
+  background-color: #fff;
   padding: 1rem;
   width: 100%;
   z-index: 10;
@@ -60,35 +64,38 @@
 
 .search-container input {
   padding: 0.5rem;
-  border: 1px solid #ccc; /* Subtle border for input */
+  border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
 }
 
+/* Search Icon */
 .search-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-left: auto; /* Pushes the search icon to the right */
 }
 
 .search-icon svg {
   width: 24px;
   height: 24px;
   fill: none;
-  stroke: #fff; /* Icon color changed to black */
+  stroke: #fff; /* Search icon color set to white */
 }
 
-/* Mobile Menu Styles */
+/* Mobile Menu Toggle (Hamburger) */
 .menu-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  margin-right: auto; /* Pushes the toggle to the left */
 }
 
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: #fff; /* Bar color changed to black */
+  background-color: #fff; /* Toggle bars color set to white */
   margin: 4px 0;
 }
 
@@ -102,7 +109,7 @@
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #fff; /* Expanded menu background color changed to white */
+    background-color: #fff;
     position: absolute;
     top: 60px;
     left: 0;
@@ -118,14 +125,14 @@
   }
 
   .nav-links a {
-    color: #000; /* Text color in expanded menu changed to black */
+    color: #000;
   }
 
   .nav-links a:hover {
-    color: #f39c12; /* Highlight color on hover */
+    color: #f39c12;
   }
 
   .search-icon {
-    order: -1; /* Move search icon to the left */
+    order: -1; /* Keeps the search icon aligned to the right */
   }
 }
