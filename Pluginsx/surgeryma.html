@@ -36,37 +36,129 @@
       width: 100%;
       height: 100%;
       border: none;
-    }
+    }   
+
     #token-popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10000;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
+
     #token-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
     }
-    input, button { margin: 10px; padding: 10px; }
-  </style>
+
+    h2 {
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+    }
+
+    #tokenInput {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 1rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        box-sizing: border-box;
+        transition: border-color 0.3s ease;
+    }
+
+    #tokenInput:focus {
+        outline: none;
+        border-color: #25D366;
+    }
+
+    button {
+        background: #25D366;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin: 10px 0;
+    }
+
+    button:hover {
+        background: #128C7E;
+    }
+
+    .whatsapp-section {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+    }
+
+    .whatsapp-link {
+        display: inline-flex;
+        align-items: center;
+        color: #25D366;
+        text-decoration: none;
+        margin-top: 1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .whatsapp-link:hover {
+        color: #128C7E;
+    }
+
+    .whatsapp-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+    }
+
+    #tokenMessage {
+        margin-top: 1rem;
+        color: #ff4444;
+        font-size: 14px;
+        min-height: 20px;
+    }
+
+    @media (max-width: 480px) {
+        #token-box {
+            padding: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+        }
+    }
+</style>
 </head>
 <body>
-   <div id="token-popup">
+<div id="token-popup">
     <div id="token-box">
-      <h2>Enter Token to Access</h2>
-      <input type="text" id="tokenInput" placeholder="Enter token" />
-      <button onclick="validateToken()">Submit</button>
-      <p id="tokenMessage"></p>
+        <h2>🔑 Enter Access Token</h2>
+        <input type="text" id="tokenInput" placeholder="Enter your token here..." />
+        <button onclick="validateToken()">Verify Token</button>
+        <p id="tokenMessage"></p>
+
+        <div class="whatsapp-section">
+            <p>Get your token from our WhatsApp channel!</p>
+            <a href="https://whatsapp.com/channel/0029Va5goUJKmCPMfqMeso1D" class="whatsapp-link" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon">
+                Join WhatsApp Channel
+            </a>
+        </div>
     </div>
-  </div>
+</div>
 
 <script>
     async function checkToken() {
