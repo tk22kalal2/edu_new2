@@ -1,3 +1,4 @@
+/* Navbar Styles */
 .navbar {
   width: 100%;
   display: flex;
@@ -74,28 +75,28 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-left: auto; /* Pushes the search icon to the right */
+  margin-left: auto; /* Pushes to the extreme right */
 }
 
 .search-icon svg {
   width: 24px;
   height: 24px;
-  fill: none;
-  stroke: #fff; /* Search icon color set to white */
+  fill: transparent; /* Makes icon colorless */
+  stroke: black; /* Ensures visibility */
 }
 
 /* Mobile Menu Toggle (Hamburger) */
 .menu-toggle {
-  display: none;
+  display: flex;
   flex-direction: column;
   cursor: pointer;
-  margin-right: auto; /* Pushes the toggle to the left */
+  margin-right: auto; /* Pushes to the extreme left */
 }
 
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: #fff; /* Toggle bars color set to white */
+  background-color: black; /* Makes bars visible */
   margin: 4px 0;
 }
 
@@ -133,6 +134,6 @@
   }
 
   .search-icon {
-    order: -1; /* Keeps the search icon aligned to the right */
+    order: -1; /* Ensures it remains at the right corner */
   }
 }
