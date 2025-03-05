@@ -75,7 +75,7 @@
   width: 24px;
   height: 24px;
   fill: none;
-  stroke: #000; /* Icon color changed to black */
+  stroke: #fff; /* Icon color changed to black */
 }
 
 /* Mobile Menu Styles */
@@ -88,7 +88,7 @@
 .menu-toggle .bar {
   width: 25px;
   height: 3px;
-  background-color: #000; /* Bar color changed to black */
+  background-color: #fff; /* Bar color changed to black */
   margin: 4px 0;
 }
 
